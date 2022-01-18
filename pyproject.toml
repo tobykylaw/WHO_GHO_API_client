@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "WHO_GHO_API_client"
-version = "0.1.2"
+version = "0.1.3"
 description = "A hassle-free way to access the WHO Global Health Observatory database!"
 authors = ["Toby Law"]
 license = "MIT"

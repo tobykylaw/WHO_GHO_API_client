@@ -185,7 +185,7 @@ def get_records(indicator_code="AIR_11", spatial_dimension='', country='', tempo
         records = requests.get(url)
         r_df = pd.DataFrame(records.json()['value'])
     except ValueError:
-        print("Invalid search criteria provided, please check arguments and try again.")
+        raise ValueError("Invalid search criteria provided, please check arguments and try again.")
         return
 
     # generate a dictionary summarizing the recorded dimensions for this indicator for user consideration

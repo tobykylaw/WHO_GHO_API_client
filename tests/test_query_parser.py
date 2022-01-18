@@ -1,5 +1,5 @@
 import pytest
-from WHO_GHO_API_client import WHO_GHO_API_client
+from WHO_GHO_API_client.WHO_GHO_API_client import query_parser
 
 def test_query_parser():
     actual = query_parser(IndicatorCode = 'WHOSIS_000001', SpatialDimType = 'Region', TimeDimType = 'year', Dim1 = 'WQ1')

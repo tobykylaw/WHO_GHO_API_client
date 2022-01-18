@@ -25,9 +25,9 @@ The package will be broken down into the following 5 main and accessory function
 * `get_dimension_values()`: implement a regex search on the values of a specific dimension.
 
 ## Resource Guides and Documentation
-[See vignette here](../Vignette_WHO_GHO_API_client.ipynb)
+[See vignette here](./Vignette_WHO_GHO_API_client.ipynb)
 
-[See documentation here](./docs/_build/html/modules.html)
+[See html documentation here](./docs/_build/html/modules.html)
 
 [Github repository](https://github.com/tobykylaw/WHO_GHO_API_client) 
 

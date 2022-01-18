@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>WHO_GHO_API_client package &#8212; WHO Global Health Observatory Database API client 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="who-gho-api-client-package">
+<h1>WHO_GHO_API_client package<a class="headerlink" href="#who-gho-api-client-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="who-gho-api-client-who-gho-api-client-module">
+<h2>WHO_GHO_API_client.WHO_GHO_API_client module<a class="headerlink" href="#who-gho-api-client-who-gho-api-client-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-WHO_GHO_API_client">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-WHO_GHO_API_client" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="WHO_GHO_API_client.get_dimension_values">
+<span class="sig-prename descclassname"><span class="pre">WHO_GHO_API_client.</span></span><span class="sig-name descname"><span class="pre">get_dimension_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dimension_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'YEAR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_for</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WHO_GHO_API_client.html#get_dimension_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WHO_GHO_API_client.get_dimension_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows user to inspect, and run a case-insensitive search through the values of a specific dimension.</p>
+<dl class="simple">
+<dt>dimension_code<span class="classifier">str</span></dt><dd><p>The GHO database unique identifier for each dimension.</p>
+</dd>
+<dt>search_for<span class="classifier">str</span></dt><dd><p>A searchword specifying dimension values of interest.
+This search applies to all elements in the dimension values dataframe.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pandas.core.frame.DataFrame</dt><dd><p>Containing all exisiting values and descriptions for a particular dimension,
+or alternatively values that fit the search criteria.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dimension_values</span><span class="p">(</span><span class="n">dimension_code</span> <span class="o">=</span> <span class="s2">&quot;country&quot;</span><span class="p">)</span>
+<span class="go">    Retrives all countries with records in the GHO database.</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dimension_values</span><span class="p">(</span><span class="n">dimension_code</span> <span class="o">=</span> <span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="n">search_for</span> <span class="o">=</span> <span class="s2">&quot;africa&quot;</span><span class="p">)</span>
+<span class="go">    Retrives all African countries with records in the GHO database.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="WHO_GHO_API_client.get_indicators">
+<span class="sig-prename descclassname"><span class="pre">WHO_GHO_API_client.</span></span><span class="sig-name descname"><span class="pre">get_indicators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">IndicatorName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WHO_GHO_API_client.html#get_indicators"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WHO_GHO_API_client.get_indicators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves by default a dataframe of indicators codes and description available on the GHO database,
+and provides a simple functionality to filter for indicator names of interest.
+The search function is case-insensitive.
+Returns a dash symbol when no records are found.</p>
+<dl class="simple">
+<dt>IndicatorName<span class="classifier">str</span></dt><dd><p>A search word which we want to retrieve relevant indicators for.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pandas.core.frame.DataFrame</dt><dd><p>A dataframe containing the requested indicators recorded in the GHO database.
+Consists of indicator codes and descriptions.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_indicators</span><span class="p">(</span><span class="n">IndicatorName</span> <span class="o">=</span> <span class="s1">&#39;female&#39;</span><span class="p">)</span>
+<span class="go">returns a dataframe of all indicators containing &quot;female&quot; in the description.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="WHO_GHO_API_client.get_records">
+<span class="sig-prename descclassname"><span class="pre">WHO_GHO_API_client.</span></span><span class="sig-name descname"><span class="pre">get_records</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indicator_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AIR_11'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_dimension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temporal_dimension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_1_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_2_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_3_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_csv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'output.csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WHO_GHO_API_client.html#get_records"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WHO_GHO_API_client.get_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dataframe of records for an indicator of choice, optionally with geographical, temporal and demographical
+filters implemented.
+Allows for the option to generate a summary of recorded dimensions for the indicator.
+The pulled dataframe can also be saved to csv.</p>
+<dl class="simple">
+<dt>indicator_code<span class="classifier">str</span></dt><dd><p>The GHO database unique identifier of the indicator we want to obtain records for.
+Run get_indicators() function and refer to the IndicatorCode column.</p>
+</dd>
+<dt>spatial_dimension<span class="classifier">str</span></dt><dd><p>(Optional) If the chosen indicator has records for more than one type of spatial dimension (eg. records for a single
+country and continent), this argument can be used to filter records for the desired one.</p>
+</dd>
+<dt>country<span class="classifier">str</span></dt><dd><p>(Optional) If the chosen indicators has records on a country level, this argument can be used to filter records for a country
+of interest.</p>
+</dd>
+<dt>temporal_dimension<span class="classifier">str</span></dt><dd><p>(Optional) If the chosen indicator has records for more than one type of temporal dimension (eg. month of the year vs.
+entire year), this argument can be used to filter records for the desired one.</p>
+</dd>
+<dt>year<span class="classifier">str</span></dt><dd><p>(Optional) If the chosen indicators has records on a yearly basis, this argument can be used to filter for a year
+of interest.</p>
+</dd>
+<dt>filter_1/filter_2/filter_3<span class="classifier">str</span></dt><dd><p>(Optional) Additional demographical dimensions to filter indicator records by.
+Refer to full indicator dataframe or summary for filtering options.</p>
+</dd>
+<dt>filter_1/filter_2/filter_3 value<span class="classifier">str</span></dt><dd><p>(Optional) Dimension values to filter indicator records by.
+Refer to full indicator dataframe or summary for filtering options.</p>
+</dd>
+<dt>summary<span class="classifier">bool</span></dt><dd><p>If true, generates summary dictionary of the recorded dimensions for the indicator of choice.</p>
+</dd>
+<dt>to_csv<span class="classifier">bool</span></dt><dd><p>If true, saves the resultant indicator entries dataframe to a local csv file.</p>
+</dd>
+<dt>csv_name<span class="classifier">str</span></dt><dd><p>Name for output csv file.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pandas.core.frame.DataFrame</dt><dd><p>Containing the requested indicator entries.</p>
+</dd>
+<dt>dict</dt><dd><p>Summarizing the values in each column of the output dataframe.
+Provides a overview of what dimensions are measured for a certain indicator, to use as guidance for further filtering.</p>
+</dd>
+<dt>csv</dt><dd><p>Output dataframe saved locally.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_records</span><span class="p">(</span><span class="n">indicator_code</span> <span class="o">=</span> <span class="s1">&#39;AIR_11&#39;</span><span class="p">,</span> <span class="n">to_csv</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="go">                csv_name = &#39;Household air pollution attributable deaths.csv&#39;, country = &quot;USA&quot;)</span>
+<span class="go">        Returns a dataframe and csv file with entries for the AIR_11 indicator, filtered for records about the USA only.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="WHO_GHO_API_client.query_parser">
+<span class="sig-prename descclassname"><span class="pre">WHO_GHO_API_client.</span></span><span class="sig-name descname"><span class="pre">query_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">IndicatorCode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WHOSIS_000001'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SpatialDimType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SpatialDim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TimeDimType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TimeDim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dim1Type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dim1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dim2Type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dim2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dim3Type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dim3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WHO_GHO_API_client.html#query_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WHO_GHO_API_client.query_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessory function of get_records().
+With user-defined geographical, temporal and demographical filters, a request query is parsed for the desired indicator.
+All arguments are taken from those submitted to get_records().</p>
+<dl class="simple">
+<dt>IndicatorCode<span class="classifier">str</span></dt><dd><p>The GHO database unique identifier for which we want to query.</p>
+</dd>
+<dt>SpatialDimType<span class="classifier">str</span></dt><dd><p>If the chosen indicator has records for more than one type of spatial dimension (eg. records for a single
+country and continent), this argument can be used to filter records for the desired one.</p>
+</dd>
+<dt>SpatialDim<span class="classifier">str</span></dt><dd><p>If the chosen spatial dimension has more than one unique values,
+this argument can be used to filter records for the desired one.</p>
+</dd>
+<dt>TimeDimType<span class="classifier">str</span></dt><dd><p>If the chosen indicator has records for more than one type of temporal dimension (eg. month of the year vs.
+entire year), this argument can be used to filter records for the desired one.</p>
+</dd>
+<dt>TimeDim<span class="classifier">str</span></dt><dd><p>If the chosen temporal dimension has more than one unique values,
+this argument can be used to filter records for the desired one.</p>
+</dd>
+<dt>Dim1/Dim2/Dim3Type<span class="classifier">str</span></dt><dd><p>Additional demographical dimensions to filter indicator records by. Refer to full indicator dataframe or summary for
+filtering options.</p>
+</dd>
+<dt>Dim1/Dim2/Dim3<span class="classifier">str</span></dt><dd><p>Dimension values to filter indicator records by. Refer to full indicator dataframe or summary for
+filtering options.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>str</dt><dd><p>A parsed url used to query the database and obtain the data entries of interest from the GHO database.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">query_parser</span><span class="p">(</span><span class="n">IndicatorCode</span> <span class="o">=</span> <span class="s1">&#39;WHOSIS_000001&#39;</span><span class="p">,</span> <span class="n">SpatialDimType</span> <span class="o">=</span> <span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="n">TimeDimType</span> <span class="o">=</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">Dim1</span> <span class="o">=</span> <span class="s1">&#39;WQ1&#39;</span><span class="p">)</span>
+<span class="go">    &quot;https://ghoapi.azureedge.net/api/WHOSIS_000001?$filter=SpatialDimType eq &#39;Region&#39; and TimeDimType eq &#39;year&#39; and Dim1 eq &#39;WQ1&#39;&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="WHO_GHO_API_client.search_dimensions">
+<span class="sig-prename descclassname"><span class="pre">WHO_GHO_API_client.</span></span><span class="sig-name descname"><span class="pre">search_dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_for</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WHO_GHO_API_client.html#search_dimensions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WHO_GHO_API_client.search_dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a dataframe of all dimensions recorded in the GHO database.
+A local, case-insensitive keyword search can be optionally implemented, to locate dimensions of interest.</p>
+<dl class="simple">
+<dt>search_for<span class="classifier">str</span></dt><dd><p>A searchword specifying dimensions of interest. Used to filter for dimension codes containing the searchword.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pandas.core.frame.DataFrame</dt><dd><p>Containing all dimension codes and descriptions recorded in the database, or alternatively fitting the search criteria.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">search_dimensions</span><span class="p">()</span>
+<span class="go">    Retrives all dimensions recorded in the database.</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">search_dimensions</span><span class="p">(</span><span class="n">search_for</span> <span class="o">=</span> <span class="s2">&quot;type&quot;</span><span class="p">)</span>
+<span class="go">    Retrives dimensions in the database that contains the word &quot;type&quot; in its code.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">WHO Global Health Observatory Database API client</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Toby Law.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/WHO_GHO_API_client.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

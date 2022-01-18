@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "WHO_GHO_API_client"
+version = "0.1.0"
+description = "A hassle-free way to access the WHO Global Health Observatory database!"
+authors = ["Toby Law"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
